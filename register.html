@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Home</title>
+        <title>Sign Up</title>
         <link href="style.css" rel="stylesheet" type="text/css" >
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
         <!-- Add Firebase products that you want to use -->
@@ -14,18 +14,21 @@
     </head>
     <body>
         <header>
-            <h1>Home</h1>
+            <h1>Sign Up</h1>
         </header>
         <main>
-            <div class="homebuttons">
-                <div class="buttoncontainer">
-                    <button>Log In</button>
+            <form>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="usernamefield">
                 </div>
-                <div class="buttoncontainer">
-                    <button onclick="location.href='register.html'">Sign Up</button>
+                <div>
+                    <label for="age">Age:</label>
+                    <input type="number" name="age" id="agefield">
                 </div>
-            </div>
-            <!-- <button onclick="testing()">Testing</button> -->
+            </form>
+
+            <button onclick="submitDetails()">Submit</button>
 
         </main>
         <footer>
