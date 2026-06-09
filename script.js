@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /***** function testing() {
 firebase.database().ref('/Game1/').update({userName3 : { 
@@ -44,3 +45,15 @@ function submitDetails() {
 //     userName = snapshotN.val();
 //     console.log(userName)
 // }
+=======
+
+/***** function testing() {
+firebase.database().ref('/Game1/').update({userName3 : { 
+    highScore : 45
+}}
+
+)
+console.log("Updated Database")
+
+} *****/
+>>>>>>> 590403f (9/6/26)
