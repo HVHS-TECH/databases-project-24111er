@@ -10,6 +10,7 @@
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
         <script src="fb_setup.js"></script>
+        <script src="fb_io.js"></script>
         
     </head>
     <body>
@@ -19,16 +20,21 @@
         <main>
             <div class="homebuttons">
                 <div class="buttoncontainer">
-                    <button>Log In</button>
+                    <button onclick="logIn()">Log In</button>
                 </div>
                 <div class="buttoncontainer">
                     <button onclick="location.href='register.html'">Sign Up</button>
                 </div>
             </div>
             <!-- <button onclick="testing()">Testing</button> -->
+            <div>
+                <!-- This button is for ease of testing only, it will NOT be apart of the final website -->
+                <button onclick="logOut()">log out</button>
+            </div>
 
         </main>
         <footer>
+            
 
         </footer>
         <script src="script.js"></script>
