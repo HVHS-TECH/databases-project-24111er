@@ -1,9 +1,11 @@
 var authenticationListener;
 var GLOBAL_user;
-var userDisplayName;
-var userProfilePicture;
-var userEmail;
-var userUID;
+var currentUserInfo= [];
+// var userDisplayName;
+// var userEmail;
+// var userProfilePicture;
+// var userUID;
+
 
 
 
@@ -28,15 +30,17 @@ async function logInPopup() {
     var result = await firebase.auth().signInWithPopup(provider);
     GLOBAL_user = result.user;
     console.log("User has logged in")
-    userDisplayName = GLOBAL_user.displayName;
-    userEmail = GLOBAL_user.email;
-    userProfilePicture = GLOBAL_user.photoURL;
-    userUID = GLOBAL_user.uid;
+    currentUserInfo.push(GLOBAL_user.uid, GLOBAL_user.displayName, GLOBAL_user.email, GLOBAL_user.photoURL)
+    // userDisplayName = GLOBAL_user.displayName;
+    // userEmail = GLOBAL_user.email;
+    // userProfilePicture = GLOBAL_user.photoURL;
+    // userUID = GLOBAL_user.uid;
+    console.log(currentUserInfo)
     firebase.database().ref('/userInfo/').update(
-        {[userUID] : {
-            name: userDisplayName,
-            email: userEmail,
-            photoURL: userProfilePicture
+        {[currentUserInfo[0]] : {
+            googleName: currentUserInfo[1],
+            email: currentUserInfo[2],
+            photoURL: currentUserInfo[3]
 
         }
             

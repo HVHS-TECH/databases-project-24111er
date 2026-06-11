@@ -20,6 +20,14 @@ function submitDetails() {
     userName = FORM_USER_NAME;
     userAge = FORM_USER_AGE;
     console.log(userName + " : " + userAge)
-    firebase.database().ref('/userInfo/' + userUID)
-
+    console.log(currentUserInfo[1])
+    firebase.database().ref('/userInfo/' + currentUserInfo[0] + '/').update({
+        name : userName,
+        age : userAge
+    })
+    
 }
+
+WELCOME_MESSAGE.innerHTML = "<h1>Welcome " + currentUserInfo[1] + "</h1>";
+DISPLAYING_USER_NAME.innerHTML = "<h2>" + userName + "</h2>";
+DISPLAYING_USER_NAME = "<img src = " + currentUserInfo[3] + " alt = profile picture>";
