@@ -1,0 +1,48 @@
+header {
+    background-color: #8d99ae;
+    margin-top: 0;
+    padding: 1%;
+    
+}
+
+header h1 {
+    padding-left: 10%;
+}
+
+body {
+    background-color: #edf2f4;
+
+}    
+
+footer {
+    background-color:#8d99ae;
+}
+
+button {
+    background-color:#ef233c;
+    border: visible;
+    border-color: #d80032;
+    border-radius: 20em;
+    width: 15em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
+    align-items: center;
+    /* padding: 1em 5em; */
+}
+
+.homebuttons {
+    align-self: center;
+    justify-self: center;
+    
+
+    
+}
+
+.buttoncontainer {
+    padding: 1em;
+    align-content: center;
+    align-self: center;
+    justify-self: center;
+    place-self: center;
+}

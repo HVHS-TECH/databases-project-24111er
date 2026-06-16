@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Home</title>
+        <title>Sign Up</title>
         <link href="style.css" rel="stylesheet" type="text/css" >
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
         <!-- Add Firebase products that you want to use -->
@@ -15,29 +15,29 @@
     </head>
     <body>
         <header>
-            <h1>Home</h1>
+            <h1>Sign Up</h1>
         </header>
         <main>
-            <div class="homebuttons">
-                <div class="buttoncontainer">
-                    <button onclick="logIn()">Log In</button>
+            <button onclick="logIn()">Log In</button>
+            <form>
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="usernamefield" required>
                 </div>
-                <div class="buttoncontainer">
-                    <button onclick="location.href='register.html'">Sign Up</button>
+                <div>
+                    <label for="age">Age:</label>
+                    <input type="number" name="age" id="agefield" required>
                 </div>
-            </div>
-            <!-- <button onclick="testing()">Testing</button> -->
-            <div>
-                <!-- This button is for ease of testing only, it will NOT be apart of the final website -->
-                <button onclick="logOut()">log out</button>
-            </div>
+            </form>
+
+            <button onclick="submitDetails()">Submit</button>
+            <button onclick="location.href='menu.html'">Testing</button>
 
         </main>
         <footer>
-            
 
         </footer>
         <script src="script.js"></script>
     </body>
 
-</html>Hello world!
+</html>
