@@ -10,6 +10,8 @@ console.log("Updated Database")
 } *****/
 var userName;
 var userAge;
+var userUid = localStorage.getItem("currentUserUid");
+
 const WELCOME_MESSAGE = document.getElementById(welcomeMessage);
 const DISPLAYING_USER_NAME = document.getElementById(userNameDisplayed);
 const DISPLAY_PROFILE_PICTURE = document.getElementById(profilePictureDisplayed);
@@ -20,8 +22,8 @@ function submitDetails() {
     userName = FORM_USER_NAME;
     userAge = FORM_USER_AGE;
     console.log(userName + " : " + userAge)
-    console.log(currentUserInfo[1])
-    firebase.database().ref('/userInfo/' + currentUserInfo[0] + '/').update({
+    console.log(userUid)
+    firebase.database().ref('/userInfo/' + userUid + '/').update({
         name : userName,
         age : userAge
     })

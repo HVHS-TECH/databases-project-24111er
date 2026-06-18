@@ -46,6 +46,8 @@ async function logInPopup() {
             
         
     })
+    localStorage.setItem("currentUserUid", currentUserInfo[0] );
+    console.log(userUid)
     
 }
 
