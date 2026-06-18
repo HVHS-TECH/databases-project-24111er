@@ -8,13 +8,13 @@ firebase.database().ref('/Game1/').update({userName3 : {
 console.log("Updated Database")
 
 } *****/
-var userName;
-var userAge;
-var userUid = localStorage.getItem("currentUserUid");
 
-const WELCOME_MESSAGE = document.getElementById(welcomeMessage);
-const DISPLAYING_USER_NAME = document.getElementById(userNameDisplayed);
-const DISPLAY_PROFILE_PICTURE = document.getElementById(profilePictureDisplayed);
+
+var userUid = sessionStorage.getItem("currentUserUid");
+var userName;
+
+
+
 
 function submitDetails() {
     const FORM_USER_NAME = document.getElementById("usernamefield").value;
@@ -27,9 +27,19 @@ function submitDetails() {
         name : userName,
         age : userAge
     })
-    
+    sessionStorage.setItem("currentUserName", userName)
 }
 
-WELCOME_MESSAGE.innerHTML = "<h1>Welcome " + currentUserInfo[1] + "</h1>";
-DISPLAYING_USER_NAME.innerHTML = "<h2>" + userName + "</h2>";
-DISPLAYING_USER_NAME = "<img src = " + currentUserInfo[3] + " alt = profile picture>";
+
+
+
+
+//  async function setUserName() {
+//     var snapshotN = await firebase.database().ref('/userInfo/' + userUid + "/name").once('value');
+//     saveUserName(snapshotN);
+// }
+
+// function saveUserName(snapshotN) {
+//     userName = snapshotN.val();
+//     console.log(userName)
+// }

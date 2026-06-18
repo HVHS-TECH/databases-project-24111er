@@ -1,6 +1,6 @@
 var authenticationListener;
 var GLOBAL_user;
-var currentUserInfo= [];
+var currentUserAuthInfo = [];
 // var userDisplayName;
 // var userEmail;
 // var userProfilePicture;
@@ -30,23 +30,23 @@ async function logInPopup() {
     var result = await firebase.auth().signInWithPopup(provider);
     GLOBAL_user = result.user;
     console.log("User has logged in")
-    currentUserInfo.push(GLOBAL_user.uid, GLOBAL_user.displayName, GLOBAL_user.email, GLOBAL_user.photoURL)
+    currentUserAuthInfo.push(GLOBAL_user.uid, GLOBAL_user.displayName, GLOBAL_user.email, GLOBAL_user.photoURL)
     // userDisplayName = GLOBAL_user.displayName;
     // userEmail = GLOBAL_user.email;
     // userProfilePicture = GLOBAL_user.photoURL;
     // userUID = GLOBAL_user.uid;
-    console.log(currentUserInfo)
+    console.log(currentUserAuthInfo)
     firebase.database().ref('/userInfo/').update(
-        {[currentUserInfo[0]] : {
-            googleName: currentUserInfo[1],
-            email: currentUserInfo[2],
-            photoURL: currentUserInfo[3]
+        {[currentUserAuthInfo[0]] : {
+            googleName: currentUserAuthInfo[1],
+            email: currentUserAuthInfo[2],
+            photoURL: currentUserAuthInfo[3]
 
         }
             
         
     })
-    localStorage.setItem("currentUserUid", currentUserInfo[0] );
+    sessionStorage.setItem("currentUserUid", currentUserAuthInfo[0] );
     console.log(userUid)
     
 }
