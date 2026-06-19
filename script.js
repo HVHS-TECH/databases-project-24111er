@@ -13,6 +13,7 @@ console.log("Updated Database")
 var userUid = sessionStorage.getItem("currentUserUid");
 var userName;
 
+const CURRENT_PAGE = window.location.pathname.split("/").pop();
 
 
 
@@ -27,7 +28,7 @@ function submitDetails() {
         name : userName,
         age : userAge
     })
-    sessionStorage.setItem("currentUserName", userName)
+    
 }
 
 

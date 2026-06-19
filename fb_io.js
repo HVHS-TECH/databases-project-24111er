@@ -47,7 +47,7 @@ async function logInPopup() {
         
     })
     sessionStorage.setItem("currentUserUid", currentUserAuthInfo[0] );
-    console.log(userUid)
+    
     
 }
 
@@ -55,4 +55,8 @@ function logOut() {
     authenticationListener;
     firebase.auth().signOut();
     console.log("User has logged out")
+}
+
+function errorHandler(error) {
+//   Look back at examples
 }

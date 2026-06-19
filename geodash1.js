@@ -10,9 +10,12 @@ console.log("Running the game");
 
 
 // End game code
-function endGame(_player, _obstacle){
+async function endGame(_player, _obstacle){
     console.log("Game ended, you got "+score+" points.")
     screenSelector = "end";
+    firebase.database().ref("/userInfo/" + userUid + "/").update({mostRecentScoreGD1 : score});
+    await obtainUserInfo();
+    checkHighScore();
     player.remove();
     obstacles.removeAll();
     // Put your database writes here:
