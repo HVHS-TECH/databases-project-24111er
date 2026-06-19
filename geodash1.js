@@ -2,7 +2,7 @@
 // P5.play: A simple game
 // 
 // This game can be used as an extra game for the 12COMP
-// and 13COMP Databases assessments
+// and 13COMP Databases assessment
 //
 // Written by Mr Britton
 /*******************************************************/
