@@ -9,9 +9,4 @@ const firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
-<<<<<<< HEAD
-=======
 
-console.log("Firebase initialize finished:");
-  console.log(firebase);
->>>>>>> 590403f (9/6/26)
