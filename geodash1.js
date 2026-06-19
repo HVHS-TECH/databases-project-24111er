@@ -5,7 +5,7 @@
 // and 13COMP Databases assessment
 //
 // Written by Mr Britton
-/*******************************************************/
+/*****************************************************/
 console.log("Running the game");
 
 
