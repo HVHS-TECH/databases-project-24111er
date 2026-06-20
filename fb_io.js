@@ -1,10 +1,7 @@
 var authenticationListener;
 var GLOBAL_user;
 var currentUserAuthInfo = [];
-// var userDisplayName;
-// var userEmail;
-// var userProfilePicture;
-// var userUID;
+
 
 
 

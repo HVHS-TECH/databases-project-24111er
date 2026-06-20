@@ -1,14 +1,21 @@
 
 var displayName = sessionStorage.getItem("currentUserName");
 var usersInfo = {};
+var currentGame;
+
 
 
 const WELCOME_MESSAGE = document.getElementById("welcomeMessage");
 const DISPLAYING_USER_NAME = document.getElementById("userNameDisplayed");
 const DISPLAY_PROFILE_PICTURE = document.getElementById("profilePictureDisplayed");
+const DISPLAY_LEADERBOARD_G1 = document.getElementById("displayLeaderBoardG1");
+const DISPLAY_LEADERBOARD_G2 = document.getElementById("displayLeaderBoardG2");
 
 obtainUserInfo();
 
+if (CURRENT_PAGE === "geodash1.html" || CURRENT_PAGE === "geodash2.html") {
+    readLeaderBoard();
+}
 
 async function obtainUserInfo() {
     console.log(userUid)
@@ -19,22 +26,17 @@ async function obtainUserInfo() {
 function saveUserInfo(snapshot) {
     usersInfo = snapshot.val();
     console.log(usersInfo)
-
     if (CURRENT_PAGE === "menu.html") {
         console.log("you are on the menu page")
         displayWelcome();
-    } else if (CURRENT_PAGE === "geodash1.html") {
-
-    }
-
-    
+    }   
     
 }
 
 function checkHighScore() {
     console.log("checking high score")
     if (CURRENT_PAGE === "geodash1.html") {
-        if (usersInfo.mostRecentScoreGD1 > usersInfo.highScoreGD1 || usersInfo.highScoreGD1 === undefined || usersInfo.highScoreGD1 === null) {
+        if (usersInfo.mostRecentScoreGD1 < usersInfo.highScoreGD1 || usersInfo.highScoreGD1 === undefined || usersInfo.highScoreGD1 === null) {
             console.log("new highscore")
             firebase.database().ref("/userInfo/" + userUid + "/").update({highScoreGD1 : usersInfo.mostRecentScoreGD1});
             firebase.database().ref("/Game1/").update({
@@ -57,4 +59,32 @@ function displayWelcome() {
     WELCOME_MESSAGE.innerHTML = "<h1>Welcome " + usersInfo.googleName + "</h1>";
     DISPLAYING_USER_NAME.innerHTML = "<h2>" + usersInfo.name + "</h2>";
     DISPLAY_PROFILE_PICTURE.innerHTML = "<img src = " + usersInfo.photoURL + " alt = profile picture>";
+}
+
+function readLeaderBoard() {
+    if (CURRENT_PAGE === "geodash1.html") {
+        currentGame = "Game1";
+    } else if (CURRENT_PAGE === "geodash2.html") {
+        currentGame = "Game2"
+    }
+    firebase.database().ref("/" + currentGame + "/").orderByValue().once('value', sortLeaderBoard, errorHandler)
+
+}
+
+function sortLeaderBoard(snapshot) {
+    snapshot.forEach(displayLeaderBoard)
+
+}
+
+function displayLeaderBoard(child) {
+    if (CURRENT_PAGE === "geodash1.html") {
+        currentGame = DISPLAY_LEADERBOARD_G1;
+    } else if (CURRENT_PAGE === "geodash2.html") {
+        currentGame = DISPLAY_LEADERBOARD_G2;
+    }
+    var value = String(child.val());
+    var positiveValue = value.split("-").pop();
+    console.log(child.key + " got " + positiveValue + " points")
+    currentGame.innerHTML += "<p>" + child.key + " : " + positiveValue + "</p>";
+
 }
