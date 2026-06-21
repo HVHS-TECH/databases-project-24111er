@@ -25,11 +25,22 @@ function submitDetails() {
     userAge = FORM_USER_AGE;
     console.log(userName + " : " + userAge)
     console.log(userUid)
+    // if (userName === null || userName === undefined || userAge === 0 || userAge === null || userAge === undefined) {}
     firebase.database().ref('/userInfo/' + userUid + '/').update({
         name : userName,
         age : userAge
     })
     
+}
+
+async function goToMenu() {
+    var snapshot = await firebase.database().ref('/userInfo/' + userUid + '/name/').once('value');
+    var savedUserName = snapshot.val();
+    if (savedUserName === null || savedUserName === undefined) {
+        window.alert("Please submit details first")
+    } else {
+        window.location.href = "./menu.html";
+    }
 }
 
 

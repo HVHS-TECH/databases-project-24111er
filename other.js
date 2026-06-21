@@ -11,7 +11,9 @@ const DISPLAY_PROFILE_PICTURE = document.getElementById("profilePictureDisplayed
 const DISPLAY_LEADERBOARD_G1 = document.getElementById("displayLeaderBoardG1");
 const DISPLAY_LEADERBOARD_G2 = document.getElementById("displayLeaderBoardG2");
 
-obtainUserInfo();
+ if (CURRENT_PAGE === "menu.html") {
+    obtainUserInfo();
+}
 
 if (CURRENT_PAGE === "geodash1.html" || CURRENT_PAGE === "geodash2.html") {
     readLeaderBoard();
@@ -32,6 +34,8 @@ function saveUserInfo(snapshot) {
     }   
     
 }
+
+
 
 function checkHighScore() {
     console.log("checking high score")
