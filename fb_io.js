@@ -56,9 +56,10 @@ async function logInPopup() {
 }
 
 function logOut() {
-    authenticationListener;
+    authenticationListener = 0;
     firebase.auth().signOut();
     console.log("User has logged out")
+    window.location.href = "./index.html";
 }
 
 function errorHandler(error) {

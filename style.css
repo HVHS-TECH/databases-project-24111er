@@ -46,3 +46,13 @@ button {
     justify-self: center;
     place-self: center;
 }
+
+
+
+dialog {
+  padding: 20px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 100px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}

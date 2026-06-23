@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Game Menu</title>
+        <link href="style.css" rel="stylesheet" type="text/css" >
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
         <!-- Add Firebase products that you want to use -->
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
@@ -20,9 +21,22 @@
             <div id="userNameDisplayed">
 
             </div>
+            <button id="changeUserDetailsButton" onclick="changeUserDetails()">Change Details?</button>
+            <dialog id="changeUserDetailsPopup">
+                <h2>Change Details</h2>
+                <button id="changeUserDetailsClose" onclick="closePopup()">X</button>
+                <form>
+                    <label for="newUsername">New Username</label>
+                    <input type="string" name="newUsername" id="newUsernameField">
+                    <label for="newAge">New Age</label>
+                    <input name="newAge" type="number" id="newAgeField">
+                </form>
+                <button onclick="saveNewDetails()">Save</button>
+            </dialog>
             <div id="profilePictureDisplayed">
 
             </div>
+            <button onclick="logOut()">Log Out</button>
             
         </header>
         <main>

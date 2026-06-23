@@ -10,8 +10,13 @@ const DISPLAYING_USER_NAME = document.getElementById("userNameDisplayed");
 const DISPLAY_PROFILE_PICTURE = document.getElementById("profilePictureDisplayed");
 const DISPLAY_LEADERBOARD_G1 = document.getElementById("displayLeaderBoardG1");
 const DISPLAY_LEADERBOARD_G2 = document.getElementById("displayLeaderBoardG2");
+const CHANGE_DETAILS_BUTTON = document.getElementById("changeUserDetailsButton");
+const CHANGE_DETAILS_POPUP = document.getElementById("changeUserDetailsPopup");
+const CHANGE_DETAILS_CLOSE = document.getElementById("changeUserDetailsClose");
 
  if (CURRENT_PAGE === "menu.html") {
+    logIn();
+    console.log( GLOBAL_user )
     obtainUserInfo();
 }
 
@@ -63,6 +68,34 @@ function displayWelcome() {
     WELCOME_MESSAGE.innerHTML = "<h1>Welcome " + usersInfo.googleName + "</h1>";
     DISPLAYING_USER_NAME.innerHTML = "<h2>" + usersInfo.name + "</h2>";
     DISPLAY_PROFILE_PICTURE.innerHTML = "<img src = " + usersInfo.photoURL + " alt = profile picture>";
+}
+
+function changeUserDetails() {
+    CHANGE_DETAILS_POPUP.showModal();
+
+}
+function saveNewDetails() {
+    const FORM_NEW_USERNAME = document.getElementById("newUsernameField").value;
+    const FORM_NEW_USER_AGE = Number(document.getElementById("newAgeField").value);
+    newUserName = FORM_NEW_USERNAME;
+    newUserAge = FORM_NEW_USER_AGE;
+    console.log(newUserName + ":" + newUserAge)
+    if (newUserAge === 0 || newUserAge === null) {
+        newUserAge = usersInfo.age;
+    } else if (newUserName === '' || newUserName === null) {
+        newUserName = usersInfo.name
+    } 
+    firebase.database().ref('/userInfo/' + userUid + '/').update({ 
+        name : newUserName,
+        age: newUserAge 
+    });
+    obtainUserInfo();
+}
+
+
+function closePopup() {
+    CHANGE_DETAILS_POPUP.close();
+
 }
 
 function readLeaderBoard() {
