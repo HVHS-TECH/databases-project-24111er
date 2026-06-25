@@ -22,7 +22,7 @@ if (CURRENT_PAGE === "menu.html" || CURRENT_PAGE === "geodash1.html" || CURRENT_
 }
 
 if (CURRENT_PAGE === "menu.html") {
-    displayTopThreeScores();
+    readTopThreeScores();
 
 }
 
@@ -37,8 +37,21 @@ async function reAuthToGainInfo() {
 
 }
 
-async function displayTopThreeScores() {
-    await firebase.database().ref
+async function readTopThreeScores() {
+    await firebase.database().ref("/Game1/").orderByValue().limitToFirst(3).once('value', sortTopThree, errorHandler);
+
+}
+
+function sortTopThree(snapshot) {
+    snapshot.forEach(displayTopThree);
+
+}
+
+function displayTopThree(child) {
+    var value = String(child.val());
+    var positiveValue = value.split("-").pop();
+    console.log(child.key + " got " + positiveValue + " points")
+    DISPLAY_TOP_THREE_G1.innerHTML += "<li>" + child.key + " : " + positiveValue + "</li>";
 
 
 }
@@ -74,7 +87,7 @@ function checkHighScore() {
             });
         }
     } else if (CURRENT_PAGE === "geodash2.html") {
-        if (usersInfo.mostRecentScoreGD2 > usersInfo.highScoreGD2 || usersInfo.highScoreGD2 === undefined || usersInfo.highScoreGD2 === null) {
+        if (usersInfo.mostRecentScoreGD2 < usersInfo.highScoreGD2 || usersInfo.highScoreGD2 === undefined || usersInfo.highScoreGD2 === null) {
             console.log("new highscore")
             firebase.database().ref("/userInfo/" + userUid + "/").update({highScoreGD2 : usersInfo.mostRecentScoreGD2});
             firebase.database().ref("/Game2/").update({
@@ -150,7 +163,7 @@ function readLeaderBoard() {
     } else if (CURRENT_PAGE === "geodash2.html") {
         currentGame = "Game2"
     }
-    firebase.database().ref("/" + currentGame + "/").orderByValue().once('value', sortLeaderBoard, errorHandler)
+    firebase.database().ref("/" + currentGame + "/").orderByValue().once('value', sortLeaderBoard, errorHandler);
 
 }
 
