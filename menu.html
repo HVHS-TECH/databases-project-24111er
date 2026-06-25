@@ -26,21 +26,38 @@
                 <h2>Change Details</h2>
                 <button id="changeUserDetailsClose" onclick="closePopup()">X</button>
                 <form>
-                    <label for="newUsername">New Username</label>
-                    <input type="string" name="newUsername" id="newUsernameField">
-                    <label for="newAge">New Age</label>
-                    <input name="newAge" type="number" id="newAgeField">
+                    <div>
+                        <label for="newUsername">Username</label>
+                        <input type="string" name="newUsername" id="newUsernameField">
+                    </div>
+                    <div>
+                        <label for="newAge">Age</label>
+                        <input name="newAge" type="number" id="newAgeField">
+                    </div>
                 </form>
                 <button onclick="saveNewDetails()">Save</button>
             </dialog>
             <dialog id="saveDetailsPopup">
-                <h3>Save changes first before closing?</h3>
-                <button onclick="saveNewDetailsAndClose()">Save and Close</button>
-                <button onclick="closePopup()">Close</button>
+                <p>Save changes first before closing?</p>
+                <button onclick="saveNewDetailsAndClose()">Save changes</button>
+                <button onclick="closePopupDontSave()">Discard changes</button>
             </dialog>
             <div id="profilePictureDisplayed">
 
             </div>
+            <div id="displayTopThreeG1">
+                <h3>Purple GeoDash Leader Board</h3>
+                <ol>
+
+                </ol>
+            </div>
+
+            <div id="displayTopThreeG2">
+                <h3>White GeoDash Leader Board</h3>
+                <ol>
+                </ol>
+            </div>
+
             <button onclick="logOut()">Log Out</button>
             
         </header>

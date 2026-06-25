@@ -14,19 +14,39 @@ const CHANGE_DETAILS_BUTTON = document.getElementById("changeUserDetailsButton")
 const CHANGE_DETAILS_POPUP = document.getElementById("changeUserDetailsPopup");
 const CHANGE_DETAILS_CLOSE = document.getElementById("changeUserDetailsClose");
 const SAVE_DETAILS_POPUP = document.getElementById("saveDetailsPopup");
+const DISPLAY_TOP_THREE_G1 = document.getElementById("displayTopThreeG1"); 
+const DISPLAY_TOP_THREE_G2 = document.getElementById("displayTopThreeG2");
 
- if (CURRENT_PAGE === "menu.html") {
-    logIn();
-    console.log( GLOBAL_user )
-    obtainUserInfo();
+if (CURRENT_PAGE === "menu.html" || CURRENT_PAGE === "geodash1.html" || CURRENT_PAGE === "geodash2.html") {
+    reAuthToGainInfo();
+}
+
+if (CURRENT_PAGE === "menu.html") {
+    displayTopThreeScores();
+
 }
 
 if (CURRENT_PAGE === "geodash1.html" || CURRENT_PAGE === "geodash2.html") {
     readLeaderBoard();
 }
 
+async function reAuthToGainInfo() {
+    await logIn();
+    console.log(GLOBAL_user + "Testing")
+    // obtainUserInfo();
+
+}
+
+async function displayTopThreeScores() {
+    await firebase.database().ref
+
+
+}
+
+
+
 async function obtainUserInfo() {
-    console.log(userUid)
+    console.log(currentUserAuthInfo[0] + ": Uid")
     var snapshot = await firebase.database().ref("/userInfo/" + userUid + "/").once('value','',errorHandler);
     saveUserInfo(snapshot);
 }
@@ -73,13 +93,20 @@ function displayWelcome() {
 
 function changeUserDetails() {
     CHANGE_DETAILS_POPUP.showModal();
+    console.log("Displaying Data")
+    const FORM_NEW_USERNAME = document.getElementById("newUsernameField");
+    const FORM_NEW_USER_AGE = document.getElementById("newAgeField");
+    FORM_NEW_USERNAME.value = usersInfo.name;
+    FORM_NEW_USER_AGE.value = usersInfo.age;
+    console.log(FORM_NEW_USERNAME + ":" + FORM_NEW_USER_AGE)
+    
 
 }
 function saveNewDetails() {
     const FORM_NEW_USERNAME = document.getElementById("newUsernameField").value;
     const FORM_NEW_USER_AGE = Number(document.getElementById("newAgeField").value);
-    newUserName = FORM_NEW_USERNAME;
     newUserAge = FORM_NEW_USER_AGE;
+    newUserName = FORM_NEW_USERNAME;
     console.log(newUserName + ":" + newUserAge)
     if (newUserAge === 0 || newUserAge === null) {
         newUserAge = usersInfo.age;
@@ -97,6 +124,12 @@ async function saveNewDetailsAndClose() {
     await saveNewDetails();
     SAVE_DETAILS_POPUP.close();
     CHANGE_DETAILS_POPUP.close();
+}
+
+function closePopupDontSave() {
+    SAVE_DETAILS_POPUP.close();
+    CHANGE_DETAILS_POPUP.close();
+
 }
 
 

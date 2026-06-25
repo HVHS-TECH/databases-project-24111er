@@ -9,7 +9,6 @@ var currentUserAuthInfo = [];
 function logIn() {
     console.log("autneticating with google")
     authenticationListener = firebase.auth().onAuthStateChanged(handleLogIn);
-
 }
 
 async function handleLogIn(_user) {
