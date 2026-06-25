@@ -13,6 +13,7 @@ const DISPLAY_LEADERBOARD_G2 = document.getElementById("displayLeaderBoardG2");
 const CHANGE_DETAILS_BUTTON = document.getElementById("changeUserDetailsButton");
 const CHANGE_DETAILS_POPUP = document.getElementById("changeUserDetailsPopup");
 const CHANGE_DETAILS_CLOSE = document.getElementById("changeUserDetailsClose");
+const SAVE_DETAILS_POPUP = document.getElementById("saveDetailsPopup");
 
  if (CURRENT_PAGE === "menu.html") {
     logIn();
@@ -92,9 +93,21 @@ function saveNewDetails() {
     obtainUserInfo();
 }
 
+async function saveNewDetailsAndClose() {
+    await saveNewDetails();
+    SAVE_DETAILS_POPUP.close();
+    CHANGE_DETAILS_POPUP.close();
+}
+
 
 function closePopup() {
-    CHANGE_DETAILS_POPUP.close();
+    const FORM_NEW_USERNAME = document.getElementById("newUsernameField").value;
+    const FORM_NEW_USER_AGE = Number(document.getElementById("newAgeField").value);
+    if (FORM_NEW_USERNAME !== "" && FORM_NEW_USERNAME !== usersInfo.name || FORM_NEW_USER_AGE !== 0 && FORM_NEW_USER_AGE !== usersInfo.age) {
+        SAVE_DETAILS_POPUP.showModal();
+    } else {
+        CHANGE_DETAILS_POPUP.close();
+    }
 
 }
 
