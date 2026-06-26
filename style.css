@@ -5,14 +5,17 @@ body {
 }
 
 header {
-    background-color: #8d99ae;
+    background-image: linear-gradient(to right, #8d99ae, #2b2d42);
     margin-top: 0;
     padding: 1%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    
     
 }
 
 header h1 {
-    padding-left: 10%;
+    padding-left: 5%;
 }
 
 body {
@@ -25,9 +28,8 @@ footer {
 }
 
 button {
-    background-color:#ef233c;
-    border: visible;
-    border-color: #d80032;
+    background-image: linear-gradient(to right, #d80032, #f4465a);
+    border: none;
     border-radius: 20em;
     width: 15em;
     padding-top: .5em;
@@ -64,12 +66,16 @@ dialog {
 }
 
 #loadingOverlay {
+    display: flex;
     position: fixed;
     top: 0;
     right: 0;
     width: 100%;
     height: 100vh;
     background-color: #edf2f4;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 
 }
 
@@ -79,4 +85,50 @@ dialog {
     border-radius: 50%;
     border: 5px solid #8d99ae;
     border-top: 5px solid #d80032;
+    animation: spin 2s linear infinite;
+    
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(360deg)
+
+    }
+}
+
+.fadeOutOfOverlay {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#profileUserName {
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(to right,  #edf2f4, #8d99ae);
+    margin: 2px;
+    border-radius: 50px;
+}
+
+#profilePictureDisplayed {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 5px;
+}
+
+#profilePictureDisplayed img {
+    border-radius: 50%;
+    width: 65%;
+    justify-self: right;
+    
+}
+
+#userNameDisplayed {
+    padding: 5px;
+    padding-left: 20px;
+    
 }

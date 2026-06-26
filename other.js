@@ -17,12 +17,26 @@ const SAVE_DETAILS_POPUP = document.getElementById("saveDetailsPopup");
 const DISPLAY_TOP_THREE_G1 = document.getElementById("displayTopThreeG1"); 
 const DISPLAY_TOP_THREE_G2 = document.getElementById("displayTopThreeG2");
 
+
+
+
 if (CURRENT_PAGE === "menu.html" || CURRENT_PAGE === "geodash1.html" || CURRENT_PAGE === "geodash2.html") {
-    reAuthToGainInfo();
+    obtainUserInfo();
+    // reAuthToGainInfo();
 }
 
 if (CURRENT_PAGE === "menu.html") {
     readTopThreeScores();
+    window.addEventListener('load', () => {
+        const LOADING_SCREEN = document.getElementById("loadingOverlay");
+        setTimeout(() => {
+            LOADING_SCREEN.classList.add("fadeOutOfOverlay");
+        }, 3000);
+
+
+        
+
+    } );
 
 }
 
@@ -100,7 +114,7 @@ function checkHighScore() {
 
 function displayWelcome() {
     WELCOME_MESSAGE.innerHTML = "<h1>Welcome " + usersInfo.googleName + "</h1>";
-    DISPLAYING_USER_NAME.innerHTML = "<h2>" + usersInfo.name + "</h2>";
+    DISPLAYING_USER_NAME.innerHTML = "<h2><i>" + usersInfo.name + "</i></h2>";
     DISPLAY_PROFILE_PICTURE.innerHTML = "<img src = " + usersInfo.photoURL + " alt = profile picture>";
 }
 
