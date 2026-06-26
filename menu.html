@@ -15,12 +15,19 @@
     </head>
     <body>
         <header>
+            <div id="loadingOverlay">
+                <div class="spinner"></div>
+            </div>
             <div id="welcomeMessage">
 
             </div>
             <div id="userNameDisplayed">
 
             </div>
+            <div id="profilePictureDisplayed">
+
+            </div>
+        </header>
             <button id="changeUserDetailsButton" onclick="changeUserDetails()">Change Details?</button>
             <dialog id="changeUserDetailsPopup">
                 <h2>Change Details</h2>
@@ -42,7 +49,7 @@
                 <button onclick="saveNewDetailsAndClose()">Save changes</button>
                 <button onclick="closePopupDontSave()">Discard changes</button>
             </dialog>
-            <div id="profilePictureDisplayed">
+            
 
             </div>
             <div id="displayTopThreeG1">
@@ -60,7 +67,7 @@
 
             <button onclick="logOut()">Log Out</button>
             
-        </header>
+        
         <main>
             <a href="geodash1.html">Geo Dash 1</a>
             <a href="geodash2.html">Geo Dash 2</a>
