@@ -21,23 +21,23 @@
             <div id="welcomeMessage">
 
             </div>
-            <div id="profileUserName">
+            <div class="profileUserName">
                 <div id="userNameDisplayed">
 
                 </div>
                 <div id="profilePictureDisplayed">
 
                 </div>
+                <button id="changeUserDetailsButton" onclick="changeUserDetails()">Change Details?</button>
             </div>
         </header>
             
         <main>
-            <a href="geodash1.html">Geo Dash 1</a>
-            <a href="geodash2.html">Geo Dash 2</a>
-            <button id="changeUserDetailsButton" onclick="changeUserDetails()">Change Details?</button>
             <dialog id="changeUserDetailsPopup">
-                <h2>Change Details</h2>
-                <button id="changeUserDetailsClose" onclick="closePopup()">X</button>
+                <div class="popupHead">
+                    <h2>Change Details</h2>
+                    <button id="changeUserDetailsClose" onclick="closePopup()">X</button>
+                </div>
                 <form>
                     <div>
                         <label for="newUsername">Username</label>
@@ -51,34 +51,44 @@
                 <button onclick="saveNewDetails()">Save</button>
             </dialog>
             <dialog id="saveDetailsPopup">
-                <p>Save changes first before closing?</p>
-                <button onclick="saveNewDetailsAndClose()">Save changes</button>
-                <button onclick="closePopupDontSave()">Discard changes</button>
+                <h2>Save changes first before closing?</h2>
+                <div class="popupHead">
+                    <button onclick="saveNewDetailsAndClose()" class="popupChangesButton">Save changes</button>
+                    <button onclick="closePopupDontSave()" class="popupChangesButton">Discard changes</button>
+                </div>
             </dialog>
-            
+            <div id="menuMain">
+                <div>
+                    <button class="gameButtons" onclick="location.href='geodash1.html'">Geo Dash (Purple eddition)</button>
+                </div>
+                <div>
+                    <button class="gameButtons" onclick="location.href='geodash2.html'">Geo Dash (White eddition)</button>
+                </div>
 
+                <div>
+                    <h3>Purple GeoDash Leader Board</h3>
+                    <ol>
+                        <div id="displayTopThreeG1">
+                
+                        </div>
+                    </ol>
+                </div>
+                <div>
+                <h3>White GeoDash Leader Board</h3>
+                    <ol>
+                        <div id="displayTopThreeG2">
+            
+                        </div>
+                    </ol>
+                </div>
             </div>
 
-            <h3>Purple GeoDash Leader Board</h3>
-            <ol>
-                <div id="displayTopThreeG1">
-                 
-                
-                </div>
-            </ol>
+            <button onclick="logOut()" id="logOutButtonInvisible">Log Out</button>
 
-            <h3>White GeoDash Leader Board</h3>
-            <ol>
-                <div id="displayTopThreeG2">
-                
-
-                </div>
-            </ol>
-
-            <button onclick="logOut()">Log Out</button>
-
+        
         </main>
         <footer>
+            
 
         </footer>
         <script src="script.js"></script>

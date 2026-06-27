@@ -30,8 +30,10 @@ if (CURRENT_PAGE === "menu.html") {
     readTopThreeScores();
     window.addEventListener('load', () => {
         const LOADING_SCREEN = document.getElementById("loadingOverlay");
+        const LOG_OUT_BUTTON = document.getElementById("logOutButtonInvisible")
         setTimeout(() => {
             LOADING_SCREEN.classList.add("fadeOutOfOverlay");
+            LOG_OUT_BUTTON.classList.add("logOutButtonVisible");
         }, 3000);
 
  
@@ -91,6 +93,7 @@ async function obtainUserInfo() {
 function saveUserInfo(snapshot) {
     usersInfo = snapshot.val();
     console.log(usersInfo)
+    displayProfileName();
     if (CURRENT_PAGE === "menu.html") {
         console.log("you are on the menu page")
         displayWelcome();
@@ -124,9 +127,14 @@ function checkHighScore() {
 
 function displayWelcome() {
     WELCOME_MESSAGE.innerHTML = "<h1>Welcome " + usersInfo.googleName + "</h1>";
+    
+}
+function displayProfileName() {
     DISPLAYING_USER_NAME.innerHTML = "<h2><i>" + usersInfo.name + "</i></h2>";
     DISPLAY_PROFILE_PICTURE.innerHTML = "<img src = " + usersInfo.photoURL + " alt = profile picture>";
 }
+
+
 
 function changeUserDetails() {
     CHANGE_DETAILS_POPUP.showModal();
