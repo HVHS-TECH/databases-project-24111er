@@ -2,6 +2,7 @@
 var displayName = sessionStorage.getItem("currentUserName");
 var usersInfo = {};
 var currentGame;
+var i;
 
 
 
@@ -33,8 +34,7 @@ if (CURRENT_PAGE === "menu.html") {
             LOADING_SCREEN.classList.add("fadeOutOfOverlay");
         }, 3000);
 
-
-        
+ 
 
     } );
 
@@ -52,7 +52,10 @@ async function reAuthToGainInfo() {
 }
 
 async function readTopThreeScores() {
-    await firebase.database().ref("/Game1/").orderByValue().limitToFirst(3).once('value', sortTopThree, errorHandler);
+    for (i=1; i<3; i++) {
+        await firebase.database().ref("/Game"+ i + "/").orderByValue().limitToFirst(3).once('value', sortTopThree, errorHandler);
+        console.log("Running for loop " + i)
+    }
 
 }
 
@@ -62,10 +65,17 @@ function sortTopThree(snapshot) {
 }
 
 function displayTopThree(child) {
+    var leaderBoardCount = DISPLAY_TOP_THREE_G1.querySelectorAll("li").length;
+    console.log("Amount of elements in div: " + leaderBoardCount)
+    if (leaderBoardCount >= 3) {
+        currentGame = DISPLAY_TOP_THREE_G2;
+    } else {
+        currentGame = DISPLAY_TOP_THREE_G1;
+    }
     var value = String(child.val());
     var positiveValue = value.split("-").pop();
     console.log(child.key + " got " + positiveValue + " points")
-    DISPLAY_TOP_THREE_G1.innerHTML += "<li>" + child.key + " : " + positiveValue + "</li>";
+    currentGame.innerHTML += "<li>" + child.key + " : " + positiveValue + "</li>";
 
 
 }
@@ -139,12 +149,10 @@ function saveNewDetails() {
         newUserAge = usersInfo.age;
     } else if (newUserName === '' || newUserName === null) {
         newUserName = usersInfo.name
-    } 
-    firebase.database().ref('/userInfo/' + userUid + '/').update({ 
-        name : newUserName,
-        age: newUserAge 
-    });
-    obtainUserInfo();
+    } else {
+        checkValidityOfInput();
+    }
+    
 }
 
 async function saveNewDetailsAndClose() {
