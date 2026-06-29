@@ -246,12 +246,12 @@ dialog h2 {
 }
 
 .logOutButtonVisible {
-    display: block;
     position: fixed;
     bottom: 10px;
     left: 10px;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 #logOutButtonInvisible {
-    display: none;
+    opacity: 0;
 }
