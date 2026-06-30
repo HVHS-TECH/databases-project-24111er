@@ -17,7 +17,13 @@ const CHANGE_DETAILS_CLOSE = document.getElementById("changeUserDetailsClose");
 const SAVE_DETAILS_POPUP = document.getElementById("saveDetailsPopup");
 const DISPLAY_TOP_THREE_G1 = document.getElementById("displayTopThreeG1"); 
 const DISPLAY_TOP_THREE_G2 = document.getElementById("displayTopThreeG2");
-
+const DISPLAY_TOP_THREE_PARENT = document.getElementById("menuMain");
+const FIRST_PLACE_G1 = document.getElementById("firstPlaceG1");
+const FIRST_PLACE_G2 = document.getElementById("firstPlaceG2");
+const SECOND_PLACE_G1 = document.getElementById("secondPlaceG1");
+const SECOND_PLACE_G2 = document.getElementById("secondPlaceG2");
+const THIRD_PLACE_G1 = document.getElementById("thirdPlaceG1");
+const THIRD_PLACE_G2 = document.getElementById("thirdPlaceG2");
 
 
 
@@ -65,17 +71,25 @@ function sortTopThree(snapshot) {
 }
 
 function displayTopThree(child) {
-    var leaderBoardCount = DISPLAY_TOP_THREE_G1.querySelectorAll("li").length;
+    var leaderBoardCount = DISPLAY_TOP_THREE_PARENT.querySelectorAll("p").length;
     console.log("Amount of elements in div: " + leaderBoardCount)
-    if (leaderBoardCount >= 3) {
-        currentGame = DISPLAY_TOP_THREE_G2;
-    } else {
-        currentGame = DISPLAY_TOP_THREE_G1;
+    if (leaderBoardCount === 0) {
+        currentGame = FIRST_PLACE_G1;
+    } else if (leaderBoardCount === 1) {
+        currentGame = SECOND_PLACE_G1;
+    } else if (leaderBoardCount === 2) {
+        currentGame = THIRD_PLACE_G1;
+    } else if (leaderBoardCount === 3) {
+        currentGame = FIRST_PLACE_G2;
+    } else if (leaderBoardCount === 4) {
+        currentGame = SECOND_PLACE_G2;
+    } else if (leaderBoardCount === 5) {
+        currentGame = THIRD_PLACE_G2;     
     }
     var value = String(child.val());
     var positiveValue = value.split("-").pop();
     console.log(child.key + " got " + positiveValue + " points")
-    currentGame.innerHTML += "<li>" + child.key + " : " + positiveValue + "</li>";
+    currentGame.innerHTML += "<p>" + child.key + " : " + positiveValue + "</p>";
 
 
 }

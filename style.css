@@ -220,16 +220,59 @@ dialog h2 {
     border-radius: 20px;
     color:#edf2f4;
     text-align: center;
+    overflow: auto;
 }
 
 .displayTopThree {
     display: grid;
+    grid-template-areas:"first first first" "second nothing third"  ;
     grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 50% 50%;
     background-color: #244172;
     color: #edf2f4;
     border-radius: 20px;
     padding: 30px;
     margin-left: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstPlace {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    grid-area: first;
+    background-color:#a3a326;
+    width: 33%;
+    animation: pulseAnimation 0.6s ease-in-out infinite;
+    
+}
+
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 #2b2d42;
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 10px #1b1c28;
+    }
+    100% {
+        tranform: scale(1);
+        cox-shadow: 0 0 0 0 #2b2d42;
+    }
+}
+
+.secondPlace {
+    grid-area: second;
+    background-color:#666c6f;
+}
+
+.thirdPlace {
+    grid-area: third;
+    background-color:#af532f;
 }
 
 .topThreeTitles {
@@ -245,6 +288,7 @@ dialog h2 {
     /* border: solid 5px #244172; */
     width: 90%;
     height: 10em;
+    
 }
 
 #menuMain {
@@ -255,7 +299,8 @@ dialog h2 {
     margin-top: 10px;
     gap: 15px;
     scrollbar-width: 0;
-    overflow: hidden;
+    
+    /* overflow: hidden; */
 
 }
 
@@ -266,21 +311,17 @@ dialog h2 {
 
 #gameButtonG2 {
     grid-area: buttonG2;
-
 }
 
 #topThreeG1 {
     grid-area: topThreeG1;
-
 }
 
 #topThreeG2 {
     grid-area: topThreeG2;
-
 }
 
 #logOutButton {
     margin: 10px;
-    
 }
 
