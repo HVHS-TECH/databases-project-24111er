@@ -20,7 +20,7 @@ var formUserAge;
 const CURRENT_PAGE = window.location.pathname.split("/").pop();
 
 
-function checkValidityOfInput() {
+async function checkValidityOfInput() {
 
     if (CURRENT_PAGE === "register.html") {
         formUserName  = document.getElementById("usernamefield");
@@ -53,8 +53,8 @@ function checkValidityOfInput() {
             age : userAge
         });
         if (CURRENT_PAGE === "menu.html") {
-            console.log("Obtaining Info")
-            obtainUserInfo();
+            await updateInformation();
+            
         }
     }
 

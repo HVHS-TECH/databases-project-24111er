@@ -159,6 +159,7 @@ dialog h2 {
 
 #profilePictureDisplayed {
     display: flex;
+    width: 75%;
     align-items: center;
     justify-content: right;
     padding: 5px;
@@ -199,27 +200,39 @@ dialog h2 {
     cursor: pointer;
     color:#542472;
 }
-/* 
-#displayTopThreeG1 {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-} */
 
-#displayLeaderBoardG2 {
+.displayLeaderBoard {
     width: fit-content;
     height: 100vh;
     overflow-x: hidden;
     padding: 20px;
     justify-content: center;
+    position: fixed;
+    right: 5px;
+    top: 25%;
 }
 
-#displayLeaderBoardG2 p {
+.displayLeaderBoard p {
     background-color:#2b2d42;
     width: 100%;
     height: 5%;
     padding: 5px;
     border-radius: 20px;
     color:#edf2f4;
+    text-align: center;
+}
+
+.displayTopThree {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    background-color: #244172;
+    color: #edf2f4;
+    border-radius: 20px;
+    padding: 30px;
+    margin-left: 5px;
+}
+
+.topThreeTitles {
     text-align: center;
 }
 
@@ -236,6 +249,7 @@ dialog h2 {
 
 #menuMain {
     display: grid;
+    grid-template-areas: "buttonG1 buttonG2" "topThreeG1 topThreeG2";
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
     margin-top: 10px;
@@ -245,13 +259,28 @@ dialog h2 {
 
 }
 
-.logOutButtonVisible {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+#gameButtonG1 {
+    grid-area: buttonG1;
+
 }
 
-#logOutButtonInvisible {
-    opacity: 0;
+#gameButtonG2 {
+    grid-area: buttonG2;
+
 }
+
+#topThreeG1 {
+    grid-area: topThreeG1;
+
+}
+
+#topThreeG2 {
+    grid-area: topThreeG2;
+
+}
+
+#logOutButton {
+    margin: 10px;
+    
+}
+

@@ -58,32 +58,32 @@
                 </div>
             </dialog>
             <div id="menuMain">
-                <div>
+                <div id="gameButtonG1">
                     <button class="gameButtons" onclick="location.href='geodash1.html'">Geo Dash (Purple eddition)</button>
                 </div>
-                <div>
+                <div id="gameButtonG2">
                     <button class="gameButtons" onclick="location.href='geodash2.html'">Geo Dash (White eddition)</button>
                 </div>
 
-                <div>
-                    <h3>Purple GeoDash Leader Board</h3>
+                <div id="topThreeG1">
+                    <span class="topThreeTitles"><h3>GeoDash (Purple Eddition) Top Three</h3></span>
                     <ol>
-                        <div id="displayTopThreeG1">
+                        <div id="displayTopThreeG1" class="displayTopThree">
                 
                         </div>
                     </ol>
                 </div>
-                <div>
-                <h3>White GeoDash Leader Board</h3>
+                <div id="topThreeG2">
+                    <span class="topThreeTitles"><h3>GeoDash (White Eddition) Top Three</h3></span>
                     <ol>
-                        <div id="displayTopThreeG2">
+                        <div id="displayTopThreeG2" class="displayTopThree">
             
                         </div>
                     </ol>
                 </div>
             </div>
 
-            <button onclick="logOut()" class="logOutButtonVisible">Log Out</button>
+            <button onclick="logOut()" id="logOutButton">Log Out</button>
 
         
         </main>

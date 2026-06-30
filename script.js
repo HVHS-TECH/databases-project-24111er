@@ -30,10 +30,8 @@ if (CURRENT_PAGE === "menu.html") {
     readTopThreeScores();
     window.addEventListener('load', () => {
         const LOADING_SCREEN = document.getElementById("loadingOverlay");
-        const LOG_OUT_BUTTON = document.getElementById("logOutButtonInvisible")
         setTimeout(() => {
             LOADING_SCREEN.classList.add("fadeOutOfOverlay");
-            LOG_OUT_BUTTON.classList.add("logOutButtonVisible");
         }, 3000);
 
  
@@ -164,6 +162,28 @@ function saveNewDetails() {
         checkValidityOfInput();
     }
     
+}
+
+async function updateInformation() {
+    console.log("Reading user name in relation to high score")
+    var snapshotV = await firebase.database().ref('/Game1/' + usersInfo.name).once('value', '', errorHandler);
+    var snapshotK = await firebase.database().ref('/userInfo/' + userUid + "/name/").once('value', '' , errorHandler );
+    console.log(snapshotK.val() + " / " + usersInfo.name)
+    console.log(snapshotK.val() + " / " + snapshotV.val())
+    getValue(snapshotK, snapshotV);
+    
+
+    async function getValue(snapshotK, snapshotV) {
+        console.log("Changing user name in relation to high score")
+        var highScoreValue = snapshotV.val();
+        var newUserName = snapshotK.val();
+        console.log(snapshotK.val() + " / " + snapshotV.val())
+        await firebase.database().ref('/Game1/').update({[newUserName] : highScoreValue});
+        firebase.database().ref('/Game1/' + usersInfo.name + '/').remove();
+        console.log("Finsihed firebase functions" + usersInfo.name)
+        obtainUserInfo();
+
+    }
 }
 
 async function saveNewDetailsAndClose() {
