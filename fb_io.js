@@ -61,6 +61,6 @@ function logOut() {
     window.location.href = "./index.html";
 }
 
-function errorHandler(error) {
+function readError(error) {
 //   Look back at examples
 }

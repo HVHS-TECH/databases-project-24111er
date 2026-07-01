@@ -11,7 +11,7 @@ header {
     margin-top: 0;
     padding: 1%;
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 10% 60% 30%;
     
     
 }
@@ -35,7 +35,6 @@ footer {
 button {
     background-image: linear-gradient(to right, #d80032, #ef233c);
     border: solid 5px #ef233c;
-    border: none;
     border-radius: 20em;
     width: 12.5em;
     height: 3em;
@@ -77,7 +76,7 @@ dialog {
   height: 200px;
 }
 
-dialog input {
+input {
     padding: 2.5px;
     margin: 7.5px;
 }
@@ -323,5 +322,64 @@ dialog h2 {
 
 #logOutButton {
     margin: 10px;
+}
+
+#registerMain {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #c7d3e8;
+    width: 500px;
+    height: 600px;
+    padding: 40px;
+    margin-top: 30px;
+
+}
+
+#registerationInputsParent {
+    padding: 15px;
+    text-align: right;
+    
+}
+
+.registerationInputs {
+    padding: 20px;
+    
+}
+
+.registerationInputs input {
+    padding: 20px;
+}
+
+#registerationParagraph {
+    width: 400px;
+    text-align: left;
+}
+
+#registerationNotice {
+    text-align: center;
+    padding: 15px;
+    
+}
+
+.registerationButtons {
+    margin: 10px;
+    border: solid 5px #d80032;
+}
+
+.iconButtons {
+    padding: 5px;
+
+}
+
+.iconButtons button {
+    margin: 5px;
+    padding: 5px;
+    width: 50%;
+    /* border: solid 5px #d80032; */
+    height: 50%;
+
 }
 

@@ -18,19 +18,29 @@
             <h1>Sign Up</h1>
         </header>
         <main>
-            <form>
-                <div>
-                    <label for="username">Username:</label>
-                    <input type="text"  name="username" id="usernamefield" required> 
+            <div id="registerMain">
+                <div id="registerationParagraph">
+                    <p>To create an account please enter your age and a username - (this is the name that will be visible to other users of this site)</p>
                 </div>
-                <div>
-                    <label for="age">Age:</label>
-                    <input type="number" name="age" id="agefield" required>
+                <div id="registerationNotice">
+                    <p><b>NOTE: You must be 13 or older to use this site.</b></p>
                 </div>
-            </form>
+                <form>
+                    <div id="registerationInputsParent">
+                        <div id="userNameInput" class="registerationInputs">
+                            <label for="username">Username:</label>
+                            <input type="text"  name="username" id="usernamefield" required> 
+                        </div>
+                        <div id="ageInput" class="registerationInputs">
+                            <label for="age">Age:</label>
+                            <input type="number" name="age" id="agefield" required>
+                        </div>
+                    </div>
+                </form>
 
-            <button onclick="checkValidityOfInput()">Submit</button>
-            <button onclick="goToMenu()">Next</button>
+                <button onclick="checkValidityOfInput()" class="registerationButtons">Submit</button>
+                <button onclick="goToMenu()" class="registerationButtons">Next</button>
+            </div>
 
         </main>
         <footer>

@@ -5,25 +5,30 @@ var currentGame;
 var i;
 
 
-
+// Saving HTML elements as constants
+// Menu.html elements
 const WELCOME_MESSAGE = document.getElementById("welcomeMessage");
 const DISPLAYING_USER_NAME = document.getElementById("userNameDisplayed");
 const DISPLAY_PROFILE_PICTURE = document.getElementById("profilePictureDisplayed");
-const DISPLAY_LEADERBOARD_G1 = document.getElementById("displayLeaderBoardG1");
-const DISPLAY_LEADERBOARD_G2 = document.getElementById("displayLeaderBoardG2");
+const DISPLAY_TOP_THREE_PARENT = document.getElementById("menuMain");
+// Popup elements
 const CHANGE_DETAILS_BUTTON = document.getElementById("changeUserDetailsButton");
 const CHANGE_DETAILS_POPUP = document.getElementById("changeUserDetailsPopup");
 const CHANGE_DETAILS_CLOSE = document.getElementById("changeUserDetailsClose");
 const SAVE_DETAILS_POPUP = document.getElementById("saveDetailsPopup");
+// Display Top Three high scores
 const DISPLAY_TOP_THREE_G1 = document.getElementById("displayTopThreeG1"); 
 const DISPLAY_TOP_THREE_G2 = document.getElementById("displayTopThreeG2");
-const DISPLAY_TOP_THREE_PARENT = document.getElementById("menuMain");
 const FIRST_PLACE_G1 = document.getElementById("firstPlaceG1");
 const FIRST_PLACE_G2 = document.getElementById("firstPlaceG2");
 const SECOND_PLACE_G1 = document.getElementById("secondPlaceG1");
 const SECOND_PLACE_G2 = document.getElementById("secondPlaceG2");
 const THIRD_PLACE_G1 = document.getElementById("thirdPlaceG1");
 const THIRD_PLACE_G2 = document.getElementById("thirdPlaceG2");
+// Leaderboards - geodash1.html and geodash2.html
+const DISPLAY_LEADERBOARD_G1 = document.getElementById("displayLeaderBoardG1");
+const DISPLAY_LEADERBOARD_G2 = document.getElementById("displayLeaderBoardG2");
+
 
 
 
@@ -50,16 +55,16 @@ if (CURRENT_PAGE === "geodash1.html" || CURRENT_PAGE === "geodash2.html") {
     readLeaderBoard();
 }
 
-async function reAuthToGainInfo() {
-    await logIn();
-    console.log(GLOBAL_user + "Testing")
-    // obtainUserInfo();
+// async function reAuthToGainInfo() {
+//     await logIn();
+//     console.log(GLOBAL_user + "Testing")
+//     // obtainUserInfo();
 
-}
+// }
 
 async function readTopThreeScores() {
     for (i=1; i<3; i++) {
-        await firebase.database().ref("/Game"+ i + "/").orderByValue().limitToFirst(3).once('value', sortTopThree, errorHandler);
+        await firebase.database().ref("/Game"+ i + "/").orderByValue().limitToFirst(3).once('value', sortTopThree, readError);
         console.log("Running for loop " + i)
     }
 
@@ -98,7 +103,7 @@ function displayTopThree(child) {
 
 async function obtainUserInfo() {
     console.log(currentUserAuthInfo[0] + ": Uid, Test")
-    var snapshot = await firebase.database().ref("/userInfo/" + userUid + "/").once('value','',errorHandler);
+    var snapshot = await firebase.database().ref("/userInfo/" + userUid + "/").once('value','',readError);
     saveUserInfo(snapshot);
 }
 
@@ -180,8 +185,8 @@ function saveNewDetails() {
 
 async function updateInformation() {
     console.log("Reading user name in relation to high score")
-    var snapshotV = await firebase.database().ref('/Game1/' + usersInfo.name).once('value', '', errorHandler);
-    var snapshotK = await firebase.database().ref('/userInfo/' + userUid + "/name/").once('value', '' , errorHandler );
+    var snapshotV = await firebase.database().ref('/Game1/' + usersInfo.name).once('value', '', readError);
+    var snapshotK = await firebase.database().ref('/userInfo/' + userUid + "/name/").once('value', '' , readError);
     console.log(snapshotK.val() + " / " + usersInfo.name)
     console.log(snapshotK.val() + " / " + snapshotV.val())
     getValue(snapshotK, snapshotV);
@@ -230,7 +235,7 @@ function readLeaderBoard() {
     } else if (CURRENT_PAGE === "geodash2.html") {
         currentGame = "Game2"
     }
-    firebase.database().ref("/" + currentGame + "/").orderByValue().once('value', sortLeaderBoard, errorHandler);
+    firebase.database().ref("/" + currentGame + "/").orderByValue().once('value', sortLeaderBoard, readError);
 
 }
 
