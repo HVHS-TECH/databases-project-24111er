@@ -214,7 +214,6 @@ dialog h2 {
 .displayLeaderBoard p {
     background-color:#2b2d42;
     width: 100%;
-    height: 5%;
     padding: 5px;
     border-radius: 20px;
     color:#edf2f4;
@@ -377,9 +376,35 @@ dialog h2 {
 .iconButtons button {
     margin: 5px;
     padding: 5px;
-    width: 50%;
+    width: fit-content;
     /* border: solid 5px #d80032; */
-    height: 50%;
+    height: fit-content;
 
 }
+
+.usersScoreDisplayed {
+    background-image: linear-gradient(to right, #edf2f4 , #8d99ae);
+    border: solid 2px #d80032;
+    color: black !important;
+}
+
+
+#firstPlaceLeaderBoard {
+    box-shadow: 0 4px 10px #a3a326;
+    border: solid 5px #a3a326;
+
+}
+
+#secondPlaceLeaderBoard {
+    box-shadow: 0 4px 10px #666c6f;
+    border: solid 5px #666c6f;
+
+}
+
+#thirdPlaceLeaderBoard {
+    box-shadow: 0 4px 10px #af532f;
+    border: solid 5px #af532f;
+
+}
+
 

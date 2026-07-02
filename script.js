@@ -258,7 +258,22 @@ function displayLeaderBoard(child) {
     }
     var value = String(child.val());
     var positiveValue = value.split("-").pop();
+    var leaderBoardCount = currentGame.querySelectorAll("p").length;
     console.log(child.key + " got " + positiveValue + " points")
-    currentGame.innerHTML += "<p>" + child.key + " : " + positiveValue + "</p>";
+    if (child.key === usersInfo.name) {
+        var isUser = "usersScoreDisplayed";
+    } 
+    if (leaderBoardCount === 0){
+        currentGame.innerHTML += "<div><p id='firstPlaceLeaderBoard' class='" + isUser + "'>" + child.key + " : " + positiveValue + "</p></div>";
+
+    } else if (leaderBoardCount === 1) {
+        currentGame.innerHTML += "<div><p id='secondPlaceLeaderBoard' class='" + isUser + "'>" + child.key + " : " + positiveValue + "</p></div>";
+
+    } else if (leaderBoardCount === 2) {
+        currentGame.innerHTML += "<div><p id='thirdPlaceLeaderBoard' class='" + isUser + "'>"  + child.key + " : " + positiveValue + "</p></div>";
+
+    } else {
+        currentGame.innerHTML += "<p>" + child.key + " : " + positiveValue + "</p>";
+    }
 
 }
