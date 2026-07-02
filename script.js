@@ -76,25 +76,32 @@ function sortTopThree(snapshot) {
 }
 
 function displayTopThree(child) {
+    var number;
     var leaderBoardCount = DISPLAY_TOP_THREE_PARENT.querySelectorAll("p").length;
     console.log("Amount of elements in div: " + leaderBoardCount)
     if (leaderBoardCount === 0) {
         currentGame = FIRST_PLACE_G1;
+        number = "<div><h3>1</h3><div>";
     } else if (leaderBoardCount === 1) {
         currentGame = SECOND_PLACE_G1;
+        number = "<h3>2</h3>";
     } else if (leaderBoardCount === 2) {
         currentGame = THIRD_PLACE_G1;
+        number = "<h3>3</h3>";
     } else if (leaderBoardCount === 3) {
         currentGame = FIRST_PLACE_G2;
+        number = "<div><h3>1</h3></div>";
     } else if (leaderBoardCount === 4) {
         currentGame = SECOND_PLACE_G2;
+        number = "<h3>2</h3>";
     } else if (leaderBoardCount === 5) {
-        currentGame = THIRD_PLACE_G2;     
+        currentGame = THIRD_PLACE_G2; 
+        number = "<h3>3</h3>";    
     }
     var value = String(child.val());
     var positiveValue = value.split("-").pop();
     console.log(child.key + " got " + positiveValue + " points")
-    currentGame.innerHTML += "<p>" + child.key + " : " + positiveValue + "</p>";
+    currentGame.innerHTML += number + "<br><p>" + child.key + " : " + positiveValue + "</p>";
 
 
 }
