@@ -8,6 +8,9 @@
   <meta name="author" content="Mr Britton">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="style.css" rel="stylesheet" type="text/css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
   <!-- P5.js & P5.play ***************************** -->
  
@@ -31,6 +34,10 @@
 ****************************************************-->
 <body>
   <header>
+    <div class="iconButtons">
+      <button onclick="returnToMenuPage()"><ion-icon name="menu-outline" size="large"></ion-icon></button>
+      <button onclick="reloadGamePage1()"><ion-icon name="reload-outline" size="large"></ion-icon></button>
+    </div>
     <h1>GeoDash (White eddition)</h1>
     <div class="profileUserName">
       <div id="userNameDisplayed">
@@ -51,8 +58,14 @@
       </div>
     </div>
   </main>
+  <footer>
+    <p>All icons made by Ionicons</p>
+  </footer>
   
   <script src="geodash2.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
   
 </body>
 <script src="register.js"></script>

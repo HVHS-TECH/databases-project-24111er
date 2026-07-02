@@ -8,11 +8,14 @@
   <meta name="author" content="Mr Britton">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="style.css" rel="stylesheet" type="text/css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
   <script src="https://q5js.org/q5.js"></script>
   <script src="https://p5play.org/v3/planck.min.js"></script>
   <script src="https://p5play.org/v3/p5play.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
-  <!-- Add Firebase products that you want to use -->
+  
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
@@ -28,8 +31,8 @@
 <body>
   <header>
     <div class="iconButtons">
-      <button><ion-icon name="menu-outline" size="large"></ion-icon></button>
-      <button><ion-icon name="reload-outline" size="large"></ion-icon></button>
+      <button onclick="returnToMenuPage()"><ion-icon name="menu-outline" size="large"></ion-icon></button>
+      <button onclick="reloadGamePage1()"><ion-icon name="reload-outline" size="large"></ion-icon></button>
     </div>
     <h1>GeoDash (Purple eddition)</h1>
     <div class="profileUserName">
@@ -49,6 +52,9 @@
       </div>
     </div>
   </main>
+  <footer>
+    <p>All icons made by Ionicons</p>
+  </footer>
   
   <script src="geodash1.js"></script>
 

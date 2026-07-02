@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <title>Game Menu</title>
         <link href="style.css" rel="stylesheet" type="text/css" >
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
         <!-- Add Firebase products that you want to use -->
         <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
@@ -14,14 +17,15 @@
         
     </head>
     <body>
-        <header>
-            <div id="loadingOverlay">
+        <div id="loadingOverlay">
                 <div class="spinner"></div>
             </div>
+        <header id="menuHeader">
+            <div></div>
             <div id="welcomeMessage">
 
             </div>
-            <div class="profileUserName">
+            <div class="profileUserName" id="menuProfileUserName">
                 <div id="userNameDisplayed">
 
                 </div>
@@ -30,6 +34,7 @@
                 </div>
                 <button id="changeUserDetailsButton" onclick="changeUserDetails()">Change Details?</button>
             </div>
+            <button onclick="logOut()" id="logOutButton">Log Out</button>
         </header>
             
         <main>
@@ -70,6 +75,7 @@
                     <div id="displayTopThreeG1" class="displayTopThree">
                         <div id="firstPlaceG1" class="firstPlace"> </div>
                         <div id ="secondPlaceG1" class="secondPlace"></div>
+                        <div id="nothing"></div>
                         <div id="thirdPlaceG1" class="thirdPlace"></div>
                 
                     </div>
@@ -85,7 +91,7 @@
                 </div>
             </div>
 
-            <button onclick="logOut()" id="logOutButton">Log Out</button>
+            
 
         
         </main>

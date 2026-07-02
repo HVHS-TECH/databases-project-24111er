@@ -277,3 +277,17 @@ function displayLeaderBoard(child) {
     }
 
 }
+
+function returnToMenuPage() {
+    window.location.href = "menu.html";
+}
+
+function reloadGamePage1() {
+    window.location.href = "menu.html";
+    window.location.href = "geodash1.html";
+}
+
+function reloadGamePage2() {
+    window.location.href = "menu.html";
+    window.location.href = "geodash2.html";
+}

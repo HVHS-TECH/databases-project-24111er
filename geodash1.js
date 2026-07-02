@@ -18,7 +18,7 @@ async function endGame(_player, _obstacle){
     checkHighScore();
     player.remove();
     obstacles.removeAll();
-    // Put your database writes here:
+    
 
 
 
